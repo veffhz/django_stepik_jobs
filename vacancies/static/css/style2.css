@@ -1,0 +1,21 @@
+body {
+    background-color: #F6F2E6;
+}
+
+a.deco-none {
+    color: inherit;
+    text-decoration:none;
+}
+
+textarea {
+    color: #000 !important;
+}
+
+#companyLogo {
+    max-width: 150px;
+    height: auto;
+}
+
+.hide {
+    display: none;
+}

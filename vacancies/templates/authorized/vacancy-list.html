@@ -1,0 +1,68 @@
+{% extends 'base_nav_authorized.html' %}
+
+{% load pluralize_tags %}
+
+<title>{% block title %}Вакансии компании | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3 pb-5">
+    <div class="row mt-5">
+
+      {% include "authorized/company_bar.html" %}
+      <div class="col-12 col-lg-8">
+        <div class="card">
+          <div class="card-body px-4 pb-4">
+            <section class="tab-pane fade show active">
+              <h2 class="h4 pt-2 pb-3">Вакансии</h2>
+
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+
+              {% for vacancy in vacancies %}
+                <div class="card mt-3">
+                  <div class="card-body px-4">
+                    <div class="row align-items-center">
+                      <div class="col-6 col-lg-8">
+                        <a href="{% url 'vacancy' vacancy.id  %}" class="mb-1 deco-none">{{ vacancy.title }}</a>
+                        <p class="mb-1">
+                          <span class="mr-4">
+                            {% if vacancy.salary_max %}
+                              до {{ vacancy.salary_max }} руб.
+                            {% elif vacancy.salary_min and not vacancy.salary_max %}
+                              от {{ vacancy.salary_min }} руб.
+                            {% else %}
+                              {{ 'з/п не указана' }}
+                            {% endif %}
+                          </span>
+                          {% with vacancy.applications.all|length as applications_count %}
+                            {% if applications_count %}
+                              <a href="{% url 'my-vacancy' vacancy.id %}#applications" class="text-info">{{ applications_count }} {{ applications_count|pluralize:"отклик" }}</a>
+                            {% else %}
+                              <small class="text-muted ">{{ 'Нет откликов' }}</small>
+                            {% endif %}
+                          {% endwith %}
+                        </p>
+                      </div>
+                      <div class="col-6 col-lg-4 text-right">
+                        <a href="{% url 'my-vacancy' vacancy.id %}" class="btn btn-outline-info">Изменить</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+              <a href="{% url 'create-vacancy' %}" class="btn btn-info mt-4" role="button">Добавить вакансию</a>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

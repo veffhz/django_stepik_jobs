@@ -1,0 +1,25 @@
+{% extends 'base_nav_authorized.html' %}
+
+<title>{% block title %}Вакансии компании | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3 pb-5">
+    <div class="row mt-5">
+
+      {% include "authorized/company_bar.html" %}
+      <div class="col-12 col-lg-8">
+        <div class="card">
+          <div class="card-body px-4 pb-4 tab-content">
+            <!-- Tab -->
+            <section>
+              <h2 class="h4 pt-2 pb-3">Информация о&nbsp;вакансии</h2>
+
+              {% include "authorized/vacancy_form.html" with view='create-vacancy' %}
+            </section>
+            <!-- END Tab -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

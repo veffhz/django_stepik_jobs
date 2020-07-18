@@ -1,0 +1,30 @@
+{% extends 'base_nav_authorized.html' %}
+
+<title>{% block title %}Создать карточку компании | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3 pb-5">
+    <div class="row mt-5">
+      <div class="col-12 col-lg-4">
+        <aside class="pt-3 pb-4 px-4 mb-5 card">
+          <h1 class="h4 pt-2 pb-2">Моя компания</h1>
+          <p class="mt-2">Пока мы думаем, что вы – частное лицо. Хотите создать карточку компании, разместить информацию и вакансии?</p>
+          <a class="btn btn-info mb-2" data-toggle="collapse" href="#collapseCompany" role="button">Создать карточку компании</a>
+        </aside>
+      </div>
+      <div class="col-12 col-lg-8 collapse {% if form.errors %}{{ 'show' }}{% endif %}" id="collapseCompany">
+        <div class="card">
+          <div class="card-body px-4 pb-4">
+            <!-- Tab -->
+            <section class="tab-pane fade show active">
+              <h2 class="h4 pt-2 pb-3">Информация о&nbsp;компании</h2>
+
+              {% include "authorized/company_form.html" with view='create-company' %}
+            </section>
+            <!-- END Tab -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

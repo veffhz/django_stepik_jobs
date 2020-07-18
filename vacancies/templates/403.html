@@ -1,0 +1,12 @@
+{% extends 'base_nav.html' %}
+
+<title>{% block title %}Ошибка доступа | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+    <div class="jumbotron text-center mt-4">
+        <h1 class="display-4">Ошибка доступа</h1>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

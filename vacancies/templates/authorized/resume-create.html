@@ -1,0 +1,24 @@
+{% extends 'base_nav_authorized.html' %}
+
+<title>{% block title %}Создать резюме | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3 pb-5">
+    <div class="row mt-5">
+      <div class="col-12 col-lg-4">
+        <aside class="pt-3 pb-4 px-4 mb-5 card">
+          <h1 class="h4 pt-2 pb-2">Мое резюме</h1>
+          <p class="mt-2">У вас нет резюме. Хотите создать его?</p>
+          <a class="btn btn-info mb-2" data-toggle="collapse" href="#collapseResume" role="button">Создать резюме</a>
+        </aside>
+      </div>
+      <div class="col-12 col-lg-8 collapse {% if form.errors %}{{ 'show' }}{% endif %}" id="collapseResume">
+        <div class="card">
+          <div class="card-body px-4 pb-4">
+              {% include "authorized/resume_form.html" with view='create-resume' %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

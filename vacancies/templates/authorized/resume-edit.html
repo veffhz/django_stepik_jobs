@@ -1,0 +1,25 @@
+{% extends 'base_nav_authorized.html' %}
+
+<title>{% block title %}Резюме | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3 pb-5">
+    <section class="col-12 col-lg-6 offset-lg-3 mt-5 card">
+      <div class="card-body px-3 pb-4">
+        <h1 class="h4 pt-2 pb-3">Мое резюме</h1>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {% include "authorized/resume_form.html" with view='resume' %}
+      </div>
+    </section>
+  </main>
+{% endblock %}

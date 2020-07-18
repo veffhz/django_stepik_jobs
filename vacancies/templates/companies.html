@@ -1,0 +1,43 @@
+{% extends 'base_nav.html' %}
+
+{% load pluralize_tags %}
+
+<title>{% block title %}Компании | {{ block.super }}{% endblock %}</title>
+
+{% block container %}
+  <main class="container mt-3">
+    <section>
+      <h1 class="h1 text-center mx-auto mt-4 pt-5" style="font-size: 70px;">
+        <strong>Все компании</strong>
+      </h1>
+      {% with companies|length as companies_count %}
+        <p class="text-center pt-1">{{ companies_count }} {{ companies_count|pluralize:"компания" }}</p>
+      {% endwith %}
+      <div class="row mt-5">
+        <div class="col-12 col-lg-8 offset-lg-2 m-auto">
+
+          {% for company in companies %}
+            <div class="card mb-4">
+              <div class="card-body px-4">
+                <div class="row">
+                  <div class="col-12 col-md-8 col-lg-9">
+                    <a href="{% url 'company' company.id %}" class="deco-none">
+                      <h4 class="h4 pb-2">{{ company.name }}, {{ company.location }}</h4>
+                    </a>
+                    <p>{{ company.description }}</p>
+                  </div>
+                  <div class="col-12 col-md-4 col-lg-3 d-flex align-items-end">
+                    <a href="{% url 'company' company.id %}">
+                      <img src="{{ company.logo.url }}" width="150" height="80" alt="">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
