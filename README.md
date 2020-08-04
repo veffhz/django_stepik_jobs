@@ -1,5 +1,5 @@
 Job search project with Django
-==================
+==================  
 [![Heroku](https://heroku-badge.herokuapp.com/?app=django-stepik-jobs&style=flat)](https://django-stepik-jobs.herokuapp.com)
 
 ##### features:
