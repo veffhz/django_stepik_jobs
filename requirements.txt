@@ -15,7 +15,7 @@ pillow==7.2.0
 phonenumbers==8.12.6
 django-autocomplete-light==3.5.1
 django-cached-modelforms==0.2.3
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-configurations==2.2
 psycopg2==2.8.5
 django-heroku==0.3.1
