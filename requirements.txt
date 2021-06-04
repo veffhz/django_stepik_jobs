@@ -1,5 +1,5 @@
 asgiref==3.2.7
-Django==3.0.7
+Django==3.1.9
 flake8==3.8.3
 importlib-metadata==1.6.1
 mccabe==0.6.1
